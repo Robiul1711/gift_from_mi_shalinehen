@@ -1,67 +1,53 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff, ShieldCheck } from "lucide-react";
-
+import logo from "@/assets/images/logo.png";
+import { Link } from "react-router-dom";
 import CommonButton from "../../components/common/CommonButton";
 import { authLogo } from "../../assets/images";
-import { Link } from "react-router-dom";
 
-interface RegisterForm {
-  firstName: string;
+interface SignInForm {
   email: string;
   password: string;
-  terms: boolean;
+  
 }
 
-export default function Register() {
+export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterForm>();
+    watch,
+  } = useForm<SignInForm>();
 
+  const passwordValue = watch("password") || "";
 
-  const onSubmit = (data: RegisterForm) => {
-    console.log(data);
+  const onSubmit = (data: SignInForm) => {
+    console.log("Login Data:", data);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white sm:px-4">
       <div className="w-full max-w-md flex flex-col items-center sm:border border-Primary p-4 sm:p-8 rounded-2xl">
+
         {/* LOGO */}
-     
+      
         <img  src={authLogo} alt="Logo" className="w-20 h-20 object-contain mb-6" />
-   
+       
 
         {/* TITLE */}
         <h1 className="text-3xl font-semibold text-center">
-         Create New Account
+          Welcome Back 
         </h1>
 
         <p className="text-gray-500 text-center mt-2 mb-6">
-      Enter your details to sing up
+     Glad to see you again. Log in to your account.
         </p>
 
         {/* FORM */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
-          {/* FIRST NAME */}
-          <div>
-            <label className="text-sm font-medium">Full Name</label>
-            <input
-              type="text"
-              {...register("firstName", { required: true })}
-              className="mt-1 w-full border rounded-lg px-4 py-2 outline-none"
-              placeholder="Enter your first name"
-            />
-            {errors.firstName && (
-              <p className="text-red-500 text-xs mt-1">
-                First name is required.
-              </p>
-            )}
-          </div>
 
           {/* EMAIL */}
           <div>
@@ -83,11 +69,10 @@ export default function Register() {
             <div className="relative mt-1">
               <input
                 type={showPassword ? "text" : "password"}
-                {...register("password", { required: true, minLength: 8 })}
+                {...register("password", { required: true })}
                 className="w-full border rounded-lg px-4 py-2 outline-none"
                 placeholder="********"
               />
-
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -97,26 +82,47 @@ export default function Register() {
               </button>
               {errors.password && (
                 <p className="text-red-500 text-xs mt-1">
-                  Password is required and must be at least 8 characters.
+                  Password is required.
                 </p>
               )}
             </div>
 
+            <div className="flex items-center justify-between mt-1">
+              <p className="text-xs text-gray-400">
+                Enter your secure password
+              </p>
+
+              {passwordValue.length >= 8 && (
+                <span className="flex items-center text-green-500 text-sm">
+                  <ShieldCheck size={16} className="mr-1" /> Strong
+                </span>
+              )}
+            </div>
+
+            {/* FORGOT PASSWORD */}
+            <div className="text-right mt-2">
+              <Link
+                to="/auth/forget-password"
+                className="text-Primary text-sm cursor-pointer"
+              >
+                Forgot Password?
+              </Link>
+            </div>
           </div>
 
-          {/* REGISTER BUTTON */}
+          {/* LOGIN BUTTON */}
 <CommonButton className="
   w-full flex items-center justify-center 
   bg-Primary text-white rounded-lg py-2 font-medium mt-4
   transition-transform duration-300 ease-out
   hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl
-">            Register
+">            Login
           </CommonButton>
 
           {/* OR WITH */}
           <div className="flex items-center mt-3 mb-3">
             <div className="h-px flex-1 bg-gray-300"></div>
-            <span className="px-3 text-gray-500 text-sm">Or Register With</span>
+            <span className="px-3 text-gray-500 text-sm">Or Login With</span>
             <div className="h-px flex-1 bg-gray-300"></div>
           </div>
 
@@ -134,11 +140,11 @@ export default function Register() {
             Continue with Google
           </CommonButton>
 
-          {/* LOGIN */}
+          {/* REGISTER LINK */}
           <p className="text-center text-sm mt-4">
-            Already have an account?{" "}
-            <Link to="/auth/sign-in" className="text-Primary cursor-pointer">
-              Log in
+            Don't have an account?{" "}
+            <Link to="/auth/sign-up" className="text-Primary cursor-pointer">
+              Register
             </Link>
           </p>
         </form>

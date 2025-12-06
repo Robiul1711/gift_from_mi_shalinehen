@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,13 +7,16 @@
 
 @theme {
   /* font */
-  --font-roboto: "Roboto", sans-serif;;
-  --font-roboto:  "Geist", sans-serif;
+  /* font */
+  --font-playfair: "Playfair Display", serif;;
+  --font-poppins: "Poppins", sans-serif;
 
   /* color */
 
-  --color-primary: green;
-  --color-bg-custom: linear-gradient(red, yellow);
+  --color-Primary: #CA8A32;
+  --color-Secondary: #364153;
+  --color-Tertiary: #6A7282;
+  --color-bg-Custom: linear-gradient(90deg, #D0A15A 0%, #C57200 100%);
 
   /* breakpoint */
   --breakpoint-xxs: 390px;
@@ -170,4 +174,65 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.section-padding-x {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.section-padding-y {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+@media screen and (min-width: 650px) {
+  .section-padding-x {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .section-padding-y {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1460px) {
+  .section-padding-x {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+  .section-padding-y {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+
+  .bg-custom {
+    background: var(--color-bg-Custom);
+  }
+
+
+button{
+  cursor: pointer;
+}
+/* Thin Neon Cyan Scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #CA8A32;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #CA8A32;
+}
+
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #CA8A32 transparent;
 }

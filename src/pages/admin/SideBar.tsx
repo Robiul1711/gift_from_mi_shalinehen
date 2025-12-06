@@ -64,7 +64,7 @@ const SideBar: React.FC<SideBarProps> = ({ sidebar, open, setOpen }) => {
           open
             ? "left-0 top-0 w-[320px] z-220 shadow-lg bg-[#1F3C37] overflow-y-auto"
             : "-left-full xl:w-[350px] w-[320px]"
-        } bg-[#ddd] backdrop-blur-md lg:px-8 px-4 flex flex-col gap-8 shadow-md xlg:static fixed transition-all duration-300`}
+        } bg-[#ddd] backdrop-blur-md lg:px-8 px-4 flex flex-col gap-4 sm:p-8 shadow-md xlg:static fixed transition-all duration-300`}
       >
         {/* Logo */}
         <Link to="/">

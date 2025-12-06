@@ -1,45 +1,24 @@
+import Banner from "../../components/homeComponents/Banner"
+import BuildFor from "../../components/homeComponents/BuildFor"
+import Celebrate from "../../components/homeComponents/Celebrate"
+import Faq from "../../components/homeComponents/Faq"
+import FeaturedGift from "../../components/homeComponents/FeaturedGift"
+import HowItWorks from "../../components/homeComponents/HowItWorks"
+import TestimonialSection from "../../components/homeComponents/TestimonialSection"
 
-import { SparklesCore } from "../../components/ui/sparkles";
-
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic"; 
 
 const Home = () => {
-
-  const axiosPublic = useAxiosPublic();
-
-  const { data: plans } = useQuery({
-    queryKey: ["plans"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/plans");
-      return res?.data?.data;
-    },
-  });
-
-  console.log(plans);
-
-
   return (
     <div>
-      <div className="">
-        <div className="min-h-screen  relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full absolute inset-0 h-screen">
-            <SparklesCore
-              id="tsparticlesfullpage"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={100}
-              className="w-full h-full"
-              particleColor="#FFFFFF"
-            />
-          </div>
-          <h1 className="text-7xl  font-bold text-center text-white relative z-20">
-          </h1>
-        </div>
-      </div>
+      <Banner />
+      <HowItWorks />
+      <FeaturedGift/>
+      <Celebrate/>
+      <BuildFor/>
+      <TestimonialSection/>
+      <Faq/>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
