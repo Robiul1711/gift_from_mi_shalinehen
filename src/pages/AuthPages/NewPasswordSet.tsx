@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff, ShieldCheck } from "lucide-react";
 import CommonButton from "../../components/common/CommonButton";
-import logo from "@/assets/images/logo.png";
-import { Link } from "react-router-dom";
 import { authLogo } from "../../assets/images";
 
 interface NewPasswordForm {

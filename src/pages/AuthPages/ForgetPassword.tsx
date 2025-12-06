@@ -1,6 +1,4 @@
 import { useForm } from "react-hook-form";
-import logo from "@/assets/images/logo.png";
-import { Link } from "react-router-dom";
 import CommonButton from "../../components/common/CommonButton";
 import { authLogo } from "../../assets/images";
 

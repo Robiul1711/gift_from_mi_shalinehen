@@ -21,10 +21,14 @@ const Navbar = () => {
   ];
 
   // Disable scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
-  }, [isMenuOpen]);
+useEffect(() => {
+  document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+
+  return () => {
+    document.body.style.overflow = "auto"; // now returns void
+  };
+}, [isMenuOpen]);
+
 
   // Glass Blur on Scroll
   useEffect(() => {

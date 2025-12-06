@@ -2,7 +2,6 @@
 import OTPInput from "otp-input-react";
 
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import CommonButton from "../../components/common/CommonButton";
 import { authLogo } from "../../assets/images";
 
